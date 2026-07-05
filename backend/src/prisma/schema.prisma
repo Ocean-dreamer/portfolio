@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id               Int       @id @default(autoincrement())
+  username         String
+  password         String    // hashed
+  email            String
+  resetToken       String?   // nullable
+  resetTokenExpiry DateTime? // nullable
+  
+  // Profile/Hero Section fields (NEW)
+  name             String    @default("")
+  title            String    @default("")
+  bio              String    @default("")
+  phone            String    @default("")
+  location         String    @default("")
+  github           String    @default("")
+  linkedin         String    @default("")
+  twitter          String    @default("")
+}
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  title        String
+  description  String
+  status       String   // "finished", "working on", "planning"
+  technologies String   // JSON array stored as string
+  link         String?
+  createdAt    DateTime @default(now())
+}
+
+model Skill {
+  id          Int      @id @default(autoincrement())
+  name        String
+  category    String   // frontend, backend, database, programming, tools, networking, design
+  level       Int      // percentage 0-100
+  color       String   // hex color code
+  iconPath    String?  // SVG path data (optional)
+  createdAt   DateTime @default(now())
+}
+model Education {
+  id          Int      @id @default(autoincrement())
+  degree      String
+  institution String
+  startYear   Int
+  endYear     Int?
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model Experience {
+  id           Int      @id @default(autoincrement())
+  role         String
+  company      String
+  duration     String   // free text, e.g. "Nov 2024 - Dec 2024"
+  description  String
+  technologies String   // JSON array stored as string
+  highlights   String   // JSON array stored as string
+  order        Int      @default(0) // controls display order, lower = more recent
+  createdAt    DateTime @default(now())
+}
+
+model Certification {
+  id          Int      @id @default(autoincrement())
+  title       String
+  issuer      String
+  date        DateTime
+  description String
+  image       String   // Path to certificate image
+  link        String?
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id        Int      @id @default(autoincrement())
+  title     String
+  slug      String   @unique
+  content   String
+  excerpt   String
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

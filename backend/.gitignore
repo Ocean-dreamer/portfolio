@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# database
+src/prisma/database.sqlite
+src/prisma/database.sqlite-journal
+
+# build output
+dist/
+
+# logs
+*.log
+
+# editor & system
+.DS_Store
+Thumbs.db

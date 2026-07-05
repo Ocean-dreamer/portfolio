@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    // Environment
+    "module": "commonjs",
+    "target": "ES2020",
+    "lib": ["esnext"],
+    "types": ["node"],
+
+    // Output
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    // Type Safety
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
