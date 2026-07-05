@@ -1,43 +1,9 @@
 // backend/src/index.ts
-import dotenv from "dotenv";
-dotenv.config();
-
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import statsRouter from "./routes/stats";
-import iricanRouter from "./routes/irican";
-import educationRouter from "./routes/education";
-import skillsRoutes from "./routes/skills";
-import projectsRouter from "./routes/projects";
-import certificationsRouter from "./routes/certifications";
-import experienceRouter from "./routes/experience";
-import profileRouter from "./routes/profile";
-import contactRouter from "./routes/contact";
-
-const app = express();
-
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
-
-app.use(cors({
-  origin: FRONTEND_URL,
-  credentials: true,
-}));
-app.use(express.json());
-app.use(cookieParser());
-
-app.use("/irican", iricanRouter);
-app.use("/api/stats", statsRouter);
-app.use("/api/education", educationRouter);
-app.use("/api/skills", skillsRoutes);
-app.use("/api/projects", projectsRouter);
-app.use("/api/certifications", certificationsRouter);
-app.use("/api/experience", experienceRouter);
-app.use("/api/profile", profileRouter);
-app.use("/api/contact", contactRouter);
+// Local development entry point only. Vercel uses api/index.ts instead
+// and never runs this file.
+import app from "./app";
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`🌐 Accepting requests from ${FRONTEND_URL}`);
+  console.log(`🚀 Server running locally on port ${PORT}`);
 });
