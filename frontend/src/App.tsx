@@ -15,6 +15,7 @@ import EducationManager from './pages/Admin/EducationManager';
 import ProjectsManager from './pages/Admin/ProjectsManager';
 import CertificationsManager from './pages/Admin/CertificationsManager';
 import Blog from './pages/Blog/Blog';
+import JourneyMap from "./components/JourneyMap";
 
 import './styles/globals.css';
 
@@ -34,6 +35,7 @@ export default function App() {
             <Route path="profile" element={<ProfileManager />} />
             {/* <Route path="experience" element={<ExperienceManager />} /> */}
             <Route path="education" element={<EducationManager />} />
+            <Route path="journey" element={<JourneyMap />} />
             <Route path="projects" element={<ProjectsManager />} />
             <Route path="skills" element={<SkillsManager />} />
             <Route path="certifications" element={<CertificationsManager />} />
